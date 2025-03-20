@@ -1,13 +1,25 @@
-import java.util.List;
-
+// Clase main para hacer pruebas y ejemplos de uso
 public class Main {
-    // Método main para hacer pruebas y ejemplos de uso
     public static void main(String[] args) {
-        LexerLisp lexer = new LexerLisp();
-        String expresion = "QUOTE(+ 2   (* \n  V 8 ))  ";
-        List<Object> resultado = lexer.evaluarExpresion(expresion);
-
-        System.out.println("Expresión válida: " + resultado.get(0));
-        System.out.println("Tokens: " + resultado.get(1));
+        InterpreteLisp interprete = new InterpreteLisp();
+        
+        // Ejemplos de uso
+        try {
+            System.out.println(interprete.evaluar("(DEFUN FIBONACCI (N)" +
+                                "(COND ((= N 0) 1)" +
+                                "((= N 1) 1)" +
+                                "(T (+ (FIBONACCI (- N 1))" + 
+                                "(FIBONACCI (- N 2))))))"));
+            System.out.println(interprete.evaluar("(FIBONACCI 10)"));
+            System.out.println(interprete.evaluar("(DEFUN MALAN (M N)" +
+                                "(COND ( (= N 0) 1)" +
+                                "(T (* M (MALAN M (- N 1)))" +
+                                ")" +
+                                "))"));
+            System.out.println(interprete.evaluar("(MALAN 2 5)"));
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 }
