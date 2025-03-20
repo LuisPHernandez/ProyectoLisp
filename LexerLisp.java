@@ -4,6 +4,17 @@ import java.util.List;
 import java.util.regex.*; 
 
 public class LexerLisp {
+    // Constructor
+    /**
+     * 
+     */
+    public LexerLisp() {
+    }
+
+    /**
+     * @param expresion
+     * @return
+     */
     public List<Object> evaluarExpresion(String expresion) {
         // Se crea una lista para guardar los tokens de la expresion
         List<String> tokens = new ArrayList<>();
@@ -17,7 +28,7 @@ public class LexerLisp {
         de esta manera podemos usar espacios para mejorar el orden y legibilidad de la regex sin afectar su funcionamiento.
         Este código fue asistido por la IA Claude para ayuda en la generación de expresiones regulares y manejo de tokens.
          */ 
-        Pattern simbolosValidos = Pattern.compile(" \\( | \\) | [\\w+\\-*/]+ | \"[^\"]*\" ", Pattern.COMMENTS);
+        Pattern simbolosValidos = Pattern.compile(" \\( | \\) | < | > | = | [\\w+\\-*/]+ | \"[^\"]*\" ", Pattern.COMMENTS);
 
         // Crea un objeto Matcher que busca los patrones definidos (símbolos válidos) en la expresión Lisp
         Matcher buscadorDeTokens = simbolosValidos.matcher(expresion);
