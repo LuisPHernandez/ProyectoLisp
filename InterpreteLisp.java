@@ -34,6 +34,11 @@ public class InterpreteLisp {
         entorno.definirVariable("NIL", null);
     }
 
+    /**
+     * @param expresion
+     * @return
+     * @throws Exception
+     */
     public Object evaluar(String expresion) throws Exception {
         // Tokeniza la expresión con el lexer
         List<Object> resultadoLexer = lexer.evaluarExpresion(expresion);
@@ -62,6 +67,12 @@ public class InterpreteLisp {
         return evaluarLisp(expresionLisp, entorno);
     }
     
+    /**
+     * @param expresionLisp
+     * @param entorno
+     * @return
+     * @throws Exception
+     */
     private Object evaluarLisp(Object expresionLisp, EntornoLisp entorno) throws Exception {
         // Si es null, retorna null
         if (expresionLisp == null) {
@@ -310,6 +321,11 @@ public class InterpreteLisp {
         throw new Exception("Sintaxis no soportada: " + expresionLisp.getClass().getName());
     }
     
+    /**
+     * @param obj1
+     * @param obj2
+     * @return
+     */
     private boolean sonIguales(Object obj1, Object obj2) {
         // Si ambos son null o referencias al mismo objeto
         if (obj1 == obj2) {
@@ -321,7 +337,7 @@ public class InterpreteLisp {
             return false;
         }
         
-        // Si son de diferente tipo
+        // Si son de diferente clase
         if (obj1.getClass() != obj2.getClass()) {
             return false;
         }
@@ -358,6 +374,13 @@ public class InterpreteLisp {
         return obj1.equals(obj2);
     }
     
+    /**
+     * @param funcion
+     * @param argumentos
+     * @param entorno
+     * @return
+     * @throws Exception
+     */
     private Object aplicarFuncion(FuncionLisp funcion, List<Object> argumentos, EntornoLisp entorno) throws Exception {
         List<String> parametros = funcion.getParametros();
         List<Object> cuerpo = funcion.getCuerpo();
@@ -386,6 +409,13 @@ public class InterpreteLisp {
         return resultado;
     }
     
+    /**
+     * @param operador
+     * @param argumentos
+     * @param entorno
+     * @return
+     * @throws Exception
+     */
     private Object evaluarOperador(String operador, List<Object> argumentos, EntornoLisp entorno) throws Exception {
         // Si no hay argumentos da un error
         if (argumentos.isEmpty()) {

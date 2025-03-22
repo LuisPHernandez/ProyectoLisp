@@ -11,6 +11,10 @@ public class FuncionLisp {
      */
     private List<Object> cuerpo;
 
+    /**
+     * @param parametros
+     * @param cuerpo
+     */
     public FuncionLisp(List<String> parametros, List<Object> cuerpo) {
         this.parametros = parametros;
         this.cuerpo = cuerpo;

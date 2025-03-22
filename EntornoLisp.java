@@ -36,10 +36,18 @@ public class EntornoLisp {
         this.entornoPadre = entornoPadre;
     }
 
+    /**
+     * @param nombre
+     * @param valor
+     */
     public void definirVariable(String nombre, Object valor) {
         variables.put(nombre, valor);
     }
 
+    /**
+     * @param nombre
+     * @return
+     */
     public Object obtenerVariable(String nombre) {
         // Buscar en el entorno actual
         if (variables.containsKey(nombre)) {
@@ -55,10 +63,18 @@ public class EntornoLisp {
         return null;
     }
 
+    /**
+     * @param nombre
+     * @param funcion
+     */
     public void definirFuncion(String nombre, FuncionLisp funcion) {
         funciones.put(nombre, funcion);
     }
 
+    /**
+     * @param nombre
+     * @return
+     */
     public FuncionLisp obtenerFuncion(String nombre) {
         // Buscar en el entorno actual
         if (funciones.containsKey(nombre)) {
