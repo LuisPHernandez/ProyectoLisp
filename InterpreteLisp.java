@@ -27,7 +27,7 @@ public class InterpreteLisp {
     }
     
     /**
-     * Inicializa las funciones básicas de Lisp
+     * Inicializa las funciones básicas de Lisp para asegurar funcionamiento
      */
     private void inicializarFuncionesBasicas() {
         entorno.definirVariable("T", true);
